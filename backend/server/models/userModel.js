@@ -18,15 +18,15 @@ const newUserSchema = new mongoose.Schema(
       type: String,
       min : 8
     },
-    favline: {
+    favline:{
+      type:String,
       required: true,
-      type: String,
-      lable: "favline",
+      label: "favline",
     },
     favroute: {
-      required: true,
       type: String,
-      lable: "favroute",
+      required: true,
+      label: "favroute",
     },
     date: {
       type: Date,
