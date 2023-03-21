@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
 const PRIMARY_COLOR = "#cc5c99";
-const SECONDARY_COLOR = "#0c0c1f";
+const SECONDARY_COLOR = "#333333";
 const url = "http://localhost:8081/user/signup";
 const Register = () => {
   const [data, setData] = useState({ username: "", email: "", password: "" });
@@ -30,9 +30,10 @@ const Register = () => {
   }, [light]);
 
   let labelStyling = {
-    color: PRIMARY_COLOR,
-    fontWeight: "bold",
+    color: "yellow",
+    fontWeight: "bolder",
     textDecoration: "none",
+    fontSize: "x-large"
   };
   let backgroundStyling = { background: bgColor };
   let buttonStyling = {
