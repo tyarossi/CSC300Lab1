@@ -13,6 +13,7 @@ import Login from "./components/pages/loginPage";
 import Signup from "./components/pages/registerPage";
 import PrivateUserProfile from "./components/pages/privateUserProfilePage";
 import TestTJ from "./components/pages/testTJpage";
+import TestCS from "./components/pages/testCSpage";
 import { createContext, useState, useEffect } from "react";
 import getUserInfo from "./utilities/decodeJwt";
 
@@ -40,6 +41,7 @@ const App = () => {
           <Route exact path="/trainTrackerPage" element={<trainTrackerPage />} />
           <Route path="/privateUserProfile" element={<PrivateUserProfile />} />
           <Route path="/testTJ" element={<TestTJ />} />
+          <Route path="/testCS" element={<TestCS />} />
         </Routes>
       </UserContext.Provider>
     </>
