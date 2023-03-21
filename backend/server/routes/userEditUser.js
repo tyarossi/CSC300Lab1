@@ -30,7 +30,9 @@ router.post('/editUser', async (req, res) =>
     newUserModel.findByIdAndUpdate(userId, {
         username : username, 
         email : email, 
-        password : hashPassword
+        password : hashPassword,
+        favline : favline,
+        favroute : faveroute
     } ,function (err, user) {
     if (err){
         console.log(err);

@@ -17,7 +17,7 @@ const HomePage = () => {
 
     if (!user) return (
         <div><h4>Log in to view this page.</h4></div>)
-    const { id, email, username, password } = user
+    const { id, email, username, password, favline, favroute } = user
     return (
         <>
             <div>
@@ -36,6 +36,14 @@ const HomePage = () => {
                 <h3>
                     Your password is
                     <span className='password'> {password} ( hashed )</span>
+                </h3>
+                <h3>
+                    Your favline is
+                    <span className='favline'> {favline} ( hashed )</span>
+                </h3>
+                <h3>
+                    Your favroute is
+                    <span className='favroute'> {favroute} ( hashed )</span>
                 </h3>
             </div>
             <button onClick={(e) => handleClick(e)}>

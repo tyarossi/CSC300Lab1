@@ -34,6 +34,8 @@ const PrivateUserProfile = () => {
     <div class="container">
       <div class="col-md-12 text-center">
         <h1>{user && user.username}</h1>
+        <h1>{user && user.favline}</h1>
+        <h1>{user && user.favroute}</h1>
         <div class="col-md-12 text-center">
           <>
             <Button className="me-2" onClick={handleShow}>

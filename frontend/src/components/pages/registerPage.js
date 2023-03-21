@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
 const PRIMARY_COLOR = "#cc5c99";
-const SECONDARY_COLOR = "#333333";
+const SECONDARY_COLOR = "#0c0c1f";
 const url = "http://localhost:8081/user/signup";
 const Register = () => {
   const [data, setData] = useState({ username: "", email: "", password: "" });
@@ -30,10 +30,10 @@ const Register = () => {
   }, [light]);
 
   let labelStyling = {
-    color: "yellow",
-    fontWeight: "bolder",
+    color: PRIMARY_COLOR,
+    fontWeight: "bold",
     textDecoration: "none",
-    fontSize: "x-large"
+    fontSize: "x-large",
   };
   let backgroundStyling = { background: bgColor };
   let buttonStyling = {
@@ -45,8 +45,8 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data: res } = await axios.post(url, data);
-      const {accessToken} = res
+      const { data } = await axios.post(url, data);
+      // const {accessToken} = res
       //store token in localStorage
       navigate("/login");
     } catch (error) {
