@@ -26,6 +26,7 @@ export default function Navbar() {
         <Nav.Link href="/">Start</Nav.Link>
         <Nav.Link href="/home">Home</Nav.Link>
         <Nav.Link href="/privateUserProfile">Profile</Nav.Link>
+        <Nav.Link href="/editUserProfile">Edit Profile</Nav.Link>
         <Nav.Link href="/mbtaAlerts">Alerts</Nav.Link>
         <Nav.Link href="/mbtaTrips">Where are Trains</Nav.Link>
         <Nav.Link href="/testTJ">"TJplaceholdername"</Nav.Link>

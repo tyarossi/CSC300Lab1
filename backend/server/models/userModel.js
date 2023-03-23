@@ -20,12 +20,10 @@ const newUserSchema = new mongoose.Schema(
     },
     favline:{
       type:String,
-      required: true,
       label: "favline",
     },
     favroute: {
       type: String,
-      required: true,
       label: "favroute",
     },
     date: {
