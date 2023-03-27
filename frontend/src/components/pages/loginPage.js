@@ -4,9 +4,10 @@ import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import getUserInfo from "../../utilities/decodeJwt";
+import MBTA from "../images/MBTA.jpg";
 
-const PRIMARY_COLOR = "#cc5c99";
-const SECONDARY_COLOR = '#0c0c1f'
+const PRIMARY_COLOR = "#9a7bb5";
+const SECONDARY_COLOR = '#b57bac'
 const url = "http://localhost:8081/user/login";
 
 const Login = () => {
@@ -19,7 +20,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   let labelStyling = {
-    color: PRIMARY_COLOR,
+    color:SECONDARY_COLOR ,
     fontWeight: "bold",
     textDecoration: "none",
   };
@@ -40,11 +41,11 @@ const Login = () => {
     setUser(obj)
 
     if (light) {
-      setBgColor("white");
-      setBgText('Dark mode')
-    } else {
-      setBgColor(SECONDARY_COLOR);
+      setBgColor("Pink");
       setBgText('Light mode')
+    } else {
+      setBgColor("Black");
+      setBgText('Dark mode')
     }
   }, [light]);
 
@@ -79,6 +80,8 @@ const Login = () => {
           <div
             className="row d-flex justify-content-center align-items-center h-100 "
             style={backgroundStyling}>
+              <div style={{color:'white'}}>Welcome to MBTA </div>
+              <img src={MBTA} />
             <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
               <Form>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -101,10 +104,11 @@ const Login = () => {
                     placeholder="Password"
                     onChange={handleChange}
                   />
+            
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
                   <Form.Text className="text-muted pt-1">
-                    Dont have an account?
+                    Don't have an account?
                     <span>
                       <Link to="/signup" style={labelStyling}> Sign up
                       </Link>
@@ -138,7 +142,7 @@ const Login = () => {
         </div>
       </section>
     </>
-  );
+  ); 
 };
 
 export default Login;
