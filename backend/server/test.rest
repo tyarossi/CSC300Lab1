@@ -50,3 +50,8 @@ Content-Type: application/json
 
 ###
 POST  http://localhost:8081/user/deleteAll
+
+
+###
+GET http://localhost:8081/tickets/getAllTickets
+Content-Type: application/json
