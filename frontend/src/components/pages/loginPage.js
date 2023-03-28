@@ -80,8 +80,11 @@ const Login = () => {
           <div
             className="row d-flex justify-content-center align-items-center h-100 "
             style={backgroundStyling}>
-              <div style={{color:'white'}}>Welcome to MBTA </div>
-              <img src={MBTA} />
+              <div style={{color:'white', fontSize:'150', fontWeight:'bold',flex:1,justifyContent: 'right', alignItems: 'right' }}>Welcome to MBTA </div>
+              <img src={MBTA} style={{width:'50%', height: '50%'}}/>
+              {/* <img src="MBTA.jpg" style="width:50% Height: 50%"/> */}
+              <div style={{color:'#b342f5', fontSize:'50', fontWeight:'bold',content:'center' }}>Please enter your username and password </div>
+            
             <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
               <Form>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
