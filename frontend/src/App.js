@@ -16,6 +16,7 @@ import TicketViewingPage from "./components/pages/ticketViewingPage";
 import TestTJ from "./components/pages/testTJpage";
 import TestCS from "./components/pages/testCSpage";
 import TestTY from "./components/pages/testTYpage";
+//import incomingTrains from "./components/pages/incomingTrains";
 import { createContext, useState, useEffect } from "react";
 import getUserInfo from "./utilities/decodeJwt";
 
@@ -46,6 +47,7 @@ const App = () => {
           <Route path="/testTJ" element={<TestTJ />} />
           <Route path="/testCS" element={<TestCS />} />
           <Route path="/testTY" element={<TestTY />} />
+          //<Route path="/incomingTrains" element={<incomingTrains />} />
         </Routes>
       </UserContext.Provider>
     </>

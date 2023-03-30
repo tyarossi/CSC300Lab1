@@ -32,6 +32,7 @@ export default function Navbar() {
         <Nav.Link href="/testTJ">"TJplaceholdername"</Nav.Link>
         <Nav.Link href="/testCS">"CSplaceholdername"</Nav.Link>
         <Nav.Link href="/testTY">"TYplaceholdername"</Nav.Link>
+        
       </Nav>
     </Container>
   </ReactNavbar>
