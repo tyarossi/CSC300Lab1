@@ -63,10 +63,11 @@ const Test = () => {
                   list.id = 'incoming-trains';
                   predictions.forEach(prediction => {
                     const arrivalTime = new Date(prediction.attributes.arrival_time);
-                    const trainId = prediction.relationships.route.data.id;
-                    //const trainName = stop.relationships.v
+                    const trainId = new String(prediction.relationships.route.data.id);
+                    const directionId = prediction.attributes.direction_id;
+                    const inOrOutb = ["Outbound", "Inbound"];
                     const listItem = document.createElement('li');
-                    listItem.textContent = `${trainId} Train arriving at ${arrivalTime.toLocaleTimeString()}`;
+                    listItem.textContent = `${trainId} Train arriving at ${arrivalTime.toLocaleTimeString()} heading ${inOrOutb[directionId]}`;
                     list.appendChild(listItem);
                   });
                   const container = document.createElement('div');
