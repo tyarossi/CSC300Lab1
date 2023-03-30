@@ -6,7 +6,7 @@ import Form from "react-bootstrap/Form";
 
 const PRIMARY_COLOR = "#cc5c99";
 const SECONDARY_COLOR = "#0c0c1f";
-const url = "http://localhost:8080/user/signup";
+const url = "http://localhost:8081/user/signup";
 const Register = () => {
   const [data, setData] = useState({ username: "", email: "", password: "" });
   const [error, setError] = useState("");
@@ -48,6 +48,7 @@ const Register = () => {
       const { data: res } = await axios.post(url, data);
       const {accessToken} = res
       //store token in localStorage
+      localStorage.setItem("accessToken", accessToken)
       navigate("/login");
     } catch (error) {
       if (
