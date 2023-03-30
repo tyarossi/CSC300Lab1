@@ -56,15 +56,17 @@ const Test = () => {
     
                   // Display the incoming trains for the selected station
                   const predictions = data.data;
-                  const stationName = predictions[0].relationships.stop.data.attributes.name;
+                  const stationName = predictions[0].relationships.stop.data.id;
                   const heading = document.createElement('h2');
                   heading.textContent = `Incoming Trains for ${stationName}`;
                   const list = document.createElement('ul');
                   list.id = 'incoming-trains';
                   predictions.forEach(prediction => {
                     const arrivalTime = new Date(prediction.attributes.arrival_time);
+                    const trainId = prediction.relationships.route.data.id;
+                    //const trainName = stop.relationships.v
                     const listItem = document.createElement('li');
-                    listItem.textContent = `Train arriving at ${arrivalTime.toLocaleTimeString()}`;
+                    listItem.textContent = `${trainId} Train arriving at ${arrivalTime.toLocaleTimeString()}`;
                     list.appendChild(listItem);
                   });
                   const container = document.createElement('div');
@@ -78,17 +80,6 @@ const Test = () => {
         })
         .catch(error => console.error(error));
     });
-    
-
-
-
-
-    // useEffect(() => {
-      
-    // const obj = getUserInfo()
-    // setUser(obj)
-     
-    // }, [])
     console.log(value)
 
 }
