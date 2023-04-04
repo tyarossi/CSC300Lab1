@@ -57,7 +57,7 @@ POST http://localhost:8081/tickets/createTickets
 Content-Type: application/json 
 
 {
-    "username" : "chiaSu",
+    "username" : "Mr Farnsworth",
     "departuretime" : "11:00",
     "stationA" : "StationA",
     "stationB" : "StationB"
@@ -73,5 +73,5 @@ POST  http://localhost:8081/tickets/deleteTicket
 Content-Type: application/json
 
 {
-    "ticketnum" : "11111"
+    "ticketnum" : "25494"
 }
