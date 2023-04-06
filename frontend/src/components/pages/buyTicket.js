@@ -6,9 +6,10 @@ import Form from "react-bootstrap/Form";
 
 const PRIMARY_COLOR = "#cc5c99";
 const SECONDARY_COLOR = "#0c0c1f";
-const url = "http://localhost:8081/user/signup";
-const Register = () => {
-  const [data, setData] = useState({ username: "", email: "", password: "" });
+const url = "http://localhost:8081/tickets/createTickets";
+
+const CreateTicket = () => {
+  const [data, setData] = useState({ username: "", depaturetime: "", stationA: "", stationB: "" });
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const [light, setLight] = useState(false);
@@ -47,9 +48,9 @@ const Register = () => {
     try {
       const { data: res } = await axios.post(url, data);
       const {accessToken} = res
-      //store token in localStorage
-      localStorage.setItem("accessToken", accessToken)
-      navigate("/login");
+      //get accesstoken stored on device
+      localStorage.getItem("accessToken", accessToken)
+      navigate("/home");
     } catch (error) {
       if (
         error.response &&
@@ -79,28 +80,31 @@ const Register = () => {
                     onChange={handleChange}
                     placeholder="Enter username"
                   />
-                  <Form.Text className="text-muted">
-                    We just might sell your data
-                  </Form.Text>
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Label style={labelStyling}>Email</Form.Label>
+                <Form.Group className="mb-3" controlId="formBasicTime">
+                  <Form.Label style={labelStyling}>Departure Time</Form.Label>
                   <Form.Control
-                    type="email"
-                    name="email"
+                    type="departuretime"
+                    name="departuretime"
                     onChange={handleChange}
-                    placeholder="Enter Email Please"
+                    placeholder="Please Enter a Departure Time"
                   />
-                  <Form.Text className="text-muted">
-                    We just might sell your data
-                  </Form.Text>
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                  <Form.Label style={labelStyling}>Password</Form.Label>
+                <Form.Group className="mb-3" controlId="formBasicDS">
+                  <Form.Label style={labelStyling}>Departure Station</Form.Label>
                   <Form.Control
-                    type="password"
-                    name="password"
-                    placeholder="Password"
+                    type="stationA"
+                    name="stationA"
+                    placeholder="Station A"
+                    onChange={handleChange}
+                  />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicAS">
+                  <Form.Label style={labelStyling}>Arrival Station</Form.Label>
+                  <Form.Control
+                    type="stationB"
+                    name="stationB"
+                    placeholder="Station B"
                     onChange={handleChange}
                   />
                 </Form.Group>
@@ -133,7 +137,7 @@ const Register = () => {
                   style={buttonStyling}
                   className="mt-2"
                 >
-                  Register
+                  Buy Ticket
                 </Button>
               </Form>
             </div>
@@ -144,4 +148,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default CreateTicket;
