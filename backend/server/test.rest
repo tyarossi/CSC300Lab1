@@ -72,6 +72,7 @@ Content-Type: application/json
 POST  http://localhost:8081/tickets/deleteTicket
 Content-Type: application/json
 
+### Change this number to any valid ticket number 
 {
-    "ticketnum" : "25494"
+    "ticketnum" : "29472"
 }

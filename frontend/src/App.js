@@ -11,6 +11,7 @@ import LandingPage from "./components/pages/landingPage";
 import HomePage from "./components/pages/homePage";
 import Login from "./components/pages/loginPage";
 import Signup from "./components/pages/registerPage";
+import Ticketing from "./components/pages/buyTicket";
 import PrivateUserProfile from "./components/pages/privateUserProfilePage";
 import TicketViewingPage from "./components/pages/ticketViewingPage";
 import TestTJ from "./components/pages/testTJpage";
@@ -40,6 +41,7 @@ const App = () => {
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} />
           <Route exact path="/mbtaAlerts" element={<MbtaAlertsPage />} />
+          <Route exact path="/ticketing" element={<Ticketing />} />
           <Route exact path="/mbtaTrip" element={<MbtaTrip />} />
           <Route exact path="/trainTrackerPage" element={<trainTrackerPage />} />
           <Route exact path="/ticketViewingPage" element={< TicketViewingPage/>} />
