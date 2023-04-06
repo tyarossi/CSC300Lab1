@@ -49,7 +49,7 @@ const Test = () => {
                 .then(response => response.json())
                 .then(data => {
                   // Remove any existing list of incoming trains
-                  const existingList = document.getElementById('incoming-trains');np
+                  const existingList = document.getElementById('incoming-trains');
                   if (existingList) {
                     existingList.remove();
                   }
