@@ -13,6 +13,7 @@ import Login from "./components/pages/loginPage";
 import Signup from "./components/pages/registerPage";
 import Ticketing from "./components/pages/buyTicket";
 import PrivateUserProfile from "./components/pages/privateUserProfilePage";
+import EditUserProfile from "./components/pages/editUserPage";
 import TicketViewingPage from "./components/pages/ticketViewingPage";
 import TestTJ from "./components/pages/testTJpage";
 import TestCS from "./components/pages/testCSpage";
@@ -46,6 +47,7 @@ const App = () => {
           <Route exact path="/trainTrackerPage" element={<trainTrackerPage />} />
           <Route exact path="/ticketViewingPage" element={< TicketViewingPage/>} />
           <Route path="/privateUserProfile" element={<PrivateUserProfile />} />
+          <Route path="/editUserProfile" element={<EditUserProfile />} />
           <Route path="/testTJ" element={<TestTJ />} />
           <Route path="/testCS" element={<TestCS />} />
           <Route path="/testTY" element={<TestTY />} />

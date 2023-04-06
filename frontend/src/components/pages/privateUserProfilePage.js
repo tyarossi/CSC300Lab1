@@ -15,6 +15,10 @@ const PrivateUserProfile = () => {
   const handleShow = () => setShow(true);
   const navigate = useNavigate();
 
+  //handle editprofile button
+  const handleEditProfile = (async) => {
+    navigate("/editUserProfile");
+  };
 
   // handle logout button
   const handleLogout = (async) => {
@@ -38,6 +42,10 @@ const PrivateUserProfile = () => {
         <h1>{user && user.favroute}</h1>
         <div class="col-md-12 text-center">
           <>
+            <Button className="me-2" onClick={handleEditProfile}>
+              Edit Profile
+            </Button>
+
             <Button className="me-2" onClick={handleShow}>
               Log Out
             </Button>

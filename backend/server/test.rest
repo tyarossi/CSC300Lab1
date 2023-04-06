@@ -69,6 +69,14 @@ GET http://localhost:8081/tickets/getAllTickets
 Content-Type: application/json
 
 ###
+GET http://localhost:8081/tickets/getTicketsbyUser
+Content-Type: application/json
+
+{
+    "username" : "ThomasUrb"
+}
+
+###
 POST  http://localhost:8081/tickets/deleteTicket
 Content-Type: application/json
 
