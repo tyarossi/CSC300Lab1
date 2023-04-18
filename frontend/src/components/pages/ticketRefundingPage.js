@@ -4,7 +4,7 @@ import axios from 'axios';
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import FormText from 'react-bootstrap/esm/FormText';
-import Placeholder from 'react-bootstrap/Placeholder';
+
 
 // const PRIMARY_COLOR = "#cc5c99";
 // const SECONDARY_COLOR = "#0c0c1f";
@@ -31,17 +31,22 @@ function Refunding() {
   
 
     return (
+      
   
     <Form>
-        <Form.Text className="tiltle-mutes" >Welcome to MBTA Refunding Page </Form.Text>
+    
+    <h1> 
+        Welcome to MBTA Refunding Page
+      </h1>
         
 
         
         
         <Form.Group className="mb-3" controlId="Username" >
           <Form.Label>Username</Form.Label>
+         
           <Form.Control type="username" placeholder="Please Enter Your Username" />
-          <Form.color color= '#cc5c99'/>
+          
           
          </Form.Group>
   

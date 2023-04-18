@@ -84,3 +84,22 @@ Content-Type: application/json
 {
     "ticketnum" : "29472"
 }
+###
+POST http://localhost:8081/userquestions/userInfoSecurity
+Content-Type: application/json
+
+{   "user": "643c2b7dffc63d3fce270035",
+    "questions" : 
+        [{
+            "question" : "What is your favorite color ?",
+            "answer" : "green"
+        },{
+            "question" : "What is your favorite animal ?",
+            "answer" : "cat"
+        },{
+            "question" : "What is your favorite country ?",
+            "answer" : "United State"
+        }]
+}
+
+
