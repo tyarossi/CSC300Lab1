@@ -20,19 +20,7 @@ router.post('/userInfoSecurity', async (req, res) => {
       return res.status(404).json({ error: 'User not found' });
     }
 
-    // const matchedQuestion = securityQuestion.questions.find(
-    //   (q) => q.question === question
-    // );
-    // console.log(matchedQuestion);
-    // if (!matchedQuestion) {
-    //   return res.status(404).json({ error: 'Question not found' });
-    // }
-
-    // if (matchedQuestion.answer === answer) {
-    //   return res.status(200).json({ message: 'Answer is correct' });
-    // } else {
-    //   return res.status(401).json({ error: 'Answer is incorrect' });
-    // }
+    
     questions.forEach(function(element){
       console.log(element);
       const question = securityQuestion.questions.find((e)=>e.question===element.question);
