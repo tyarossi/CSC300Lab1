@@ -11,10 +11,9 @@ router.post('/userInfoSecurity', async (req, res) => {
   console.log("The questions is "+ questions);
 
   try {
-    //const newUser = await newUserModel.findById(user);
-    //console.log(newUser);
+
     const securityQuestion = await SecurityQuestion.findOne({ user : user });
-    //const securityQuestion = await SecurityQuestion.findById('6438111ed35ac6a1d877843f');
+    
     console.log("The security question is "+ securityQuestion);
     if (!securityQuestion) {
       return res.status(404).json({ error: 'User not found' });
@@ -34,33 +33,11 @@ router.post('/userInfoSecurity', async (req, res) => {
     return res.status(200).json({ message: 'Answer is correct' });
   } catch (err) {
     console.error(err);
-//    return res.status(500).json({ error: 'Internal Server Error' });
+
   }
 });
 
 module.exports = router;
-// router.post('/userInfoSecurity', async (req, res) => {
-//     const { questionId, answer } = req.body;
-//     console.log('aaaa');
-//     try {
-//         const securityQuestion = await SecurityQuestion.findById(questionId);
-    
-//         if (!securityQuestion) {
-//           return res.status(404).json({ error: 'Security question not found' });
-//         }
-//         if (securityQuestion.answer.toLowerCase() === answer.toLowerCase()) {
-            
-//             return res.json({ success: true });
-//           } else {
-            
-//             return res.status(401).json({ error: 'Incorrect answer' });
-//           }
-//         } catch (err) {
-          
-//           return res.status(500).json({ error: 'Internal server error' });
-//         }
-//       });
-      
-//       module.exports = router;
+
 
 
