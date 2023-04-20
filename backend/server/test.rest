@@ -92,7 +92,7 @@ Content-Type: application/json
     "questions" : 
         [{
             "question" : "What is your favorite color ?",
-            "answer" : "green"
+            "answer" : "blue"
         },{
             "question" : "What is your favorite animal ?",
             "answer" : "cat"

@@ -46,9 +46,6 @@ const Register = () => {
     e.preventDefault();
     try {
       const { data: res } = await axios.post(url, data);
-      const {accessToken} = res
-      //store token in localStorage
-      localStorage.setItem("accessToken", accessToken)
       navigate("/login");
     } catch (error) {
       if (
