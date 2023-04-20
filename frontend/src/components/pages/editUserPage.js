@@ -13,25 +13,9 @@ const EditUserPage = () =>{
   const url = "http://localhost:8081/user/editUser";
   const navigate = useNavigate();
 
-  // form validation checks
-  const [ errors, setErrors ] = useState({})
-  const findFormErrors = () => {
-    const {username, email, password} = form
-    const newErrors = {}
-    // username validation checks
-    if (!username || username === '') newErrors.name = 'Input a valid username'
-    else if (username.length < 6) newErrors.name = 'Username must be at least 6 characters'
-    // email validation checks
-    if (!email || email === '') newErrors.email = 'Input a valid email address'
-    if (!/\S+@\S+\.\S+/.test(email)) newErrors.email = 'Input a valid email address'
-    // password validation checks
-    if (!password || password === '') newErrors.password = 'Input a valid password'
-    else if (password.length < 8) newErrors.password = 'Password must be at least 8 characters'
-    return newErrors
-  }
-
-  // initialize form values and get userId on render
-  const [form, setValues] = useState({userId : "", username: "", email: "", password: "" })
+  // initialize form values and get userId, username, email & password on render
+  const [form, setValues] = useState({userId : "", favline: "", favroute: "" })
+  const [user, setUser] = useState({})
   useEffect(() => {
     setValues({userId : getUserInfo().id})
   }, [])
@@ -39,25 +23,18 @@ const EditUserPage = () =>{
   // handle form field changes
   const handleChange = ({ currentTarget: input }) => {
     setValues({ ...form, [input.id]: input.value });
-    if ( !!errors[input] ) setErrors({
-      ...errors,
-      [input]: null
-    })
   };
 
   // handle form submission with submit button
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const newErrors = findFormErrors()
-    if(Object.keys(newErrors).length > 0) {
-      setErrors(newErrors)
-    }
-    else {
       try {
         const { data: res } = await axios.post(url, form);
         const { accessToken } = res;
-        //store token in localStorage
-        localStorage.setItem("accessToken", accessToken);
+        //get token in localStorage
+        localStorage.getItem("accessToken", accessToken);
+        localStorage.clear();
+        setUser(getUserInfo())
         navigate("/privateuserprofile");
       } catch (error) {
       if (
@@ -68,12 +45,6 @@ const EditUserPage = () =>{
       ) {
         window.alert(error.response.data.message);
       }
-      if (error.response &&
-        error.response.status === 409
-      ) {
-        setErrors({name : "Username is taken, pick another"})
-      }
-    }
     }
   }
 
@@ -89,54 +60,41 @@ const EditUserPage = () =>{
         <Card.Body> 
         <Form>
 
-          <Form.Group className="mb-3" controlId="formName">
-            <Form.Label>Username</Form.Label>
-            <Form.Control type="text" placeholder="Enter new username" 
-                        id="username"
-                        value={form.username}
+          <Form.Group className="mb-3" controlId="formLine">
+            <Form.Label>Your Favorite Line to Travel</Form.Label>
+            <Form.Control type="text" placeholder="Enter new Line" 
+                        id="favline"
+                        value={form.favline}
                         onChange={handleChange}
-                        isInvalid={ !!errors.name }
             />
-            <Form.Control.Feedback type='invalid'>
-              { errors.name }
-            </Form.Control.Feedback>
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formEmail">
-             <Form.Label>Email address</Form.Label>
-             <Form.Control type="text" placeholder="Enter new email address" 
-                         id="email"
-                         value={form.email}
-                         onChange={handleChange}
-                         isInvalid = { !!errors.email }
-             />
-             <Form.Control.Feedback type='invalid'>
-              { errors.email }
-             </Form.Control.Feedback>
+          <Form.Group className="mb-3" controlId="formRoute">
+            <Form.Label>Your Favorite Route to Travel</Form.Label>
+            <Form.Control type="text" placeholder="Enter new Route" 
+                        id="favroute"
+                        value={form.favroute}
+                        onChange={handleChange}
+            />
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formPassword">
-             <Form.Label>Password</Form.Label>
-             <Form.Control type="text" placeholder="Enter new password" 
-                         id="password"
-                         value={form.password}
-                         onChange={handleChange}
-                         isInvalid = { !!errors.password }
-             />
-             <Form.Control.Feedback type='invalid'>
-              { errors.password }
-             </Form.Control.Feedback>
-          </Form.Group>
-
+        <h7>You Will be Required to Login After Submitting Changes.</h7>
+        
         <Row>
           <Col>
-          <Button variant="primary" type="submit" onClick={handleSubmit}>
+          <Button 
+            variant="primary" 
+            type="submit" 
+            onClick={handleSubmit}>
             Submit
           </Button>
           </Col>
 
           <Col>
-          <Button variant="primary" type="cancel" onClick={handleCancel}>
+          <Button 
+            variant="primary" 
+            type="cancel" 
+            onClick={handleCancel}>
             Cancel
           </Button>
           </Col>
