@@ -12,7 +12,7 @@ const Test = () => {
       // Create the necessary HTML elements
       const body = document.body;
       const heading = document.createElement('h1');
-      heading.textContent = 'MBTA Train Tracker';
+      heading.textContent = 'MBTA Station Train Tracker';
       const select = document.createElement('select');
       select.id = 'stations';
       const option = document.createElement('option');
@@ -48,34 +48,48 @@ const Test = () => {
               fetch(url)
                 .then(response => response.json())
                 .then(data => {
-                  // Remove any existing list of incoming trains
-                  const existingList = document.getElementById('incoming-trains');
-                  if (existingList) {
-                    existingList.remove();
-                  }
-    
-                  // Display the incoming trains for the selected station
-                  const predictions = data.data;
-                  const stationName = predictions[0].relationships.stop.data.id;
-                  const heading = document.createElement('h2');
-                  heading.textContent = `Incoming Trains for ${stationName}`;
-                  const list = document.createElement('ul');
-                  list.id = 'incoming-trains';
-                  predictions.forEach(prediction => {
-                    const arrivalTime = new Date(prediction.attributes.arrival_time);
-                    const trainId = new String(prediction.relationships.route.data.id);
-                    const directionId = prediction.attributes.direction_id;
-                    const inOrOutb = ["Outbound", "Inbound"];
-                    const listItem = document.createElement('li');
-                    listItem.textContent = `${trainId} Train arriving at ${arrivalTime.toLocaleTimeString()} heading ${inOrOutb[directionId]}`;
-                    list.appendChild(listItem);
+                  const url2 = `https://api-v3.mbta.com/alerts?filter%5Bactivity%5D=BOARD%2CEXIT%2CRIDE&filter%5Bfacility%5D=${stationId}`;
+                  fetch(url2)
+                    .then(response => response.json())
+                    .then(data => {
+                      // Remove any existing list of incoming trains
+                      const existingList = document.getElementById('incoming-trains');
+                      if (existingList) {
+                        existingList.remove();
+                      }
+        
+                      // Display the incoming trains for the selected station
+                      const predictions = data.data;
+                      const stationName = predictions[0].relationships.stop.data.id;
+                      const delays = alert[0].relationships.stop.data.id;
+                      const heading = document.createElement('h2');
+                      heading.textContent = `Incoming Trains for ${stationName}`;
+                      const list = document.createElement('ul');
+                      list.id = 'incoming-trains';
+                      // loop through incoming trains and give arrival time, train ID and heading
+                      predictions.forEach(prediction => {
+                        const arrivalTime = new Date(prediction.attributes.arrival_time);
+                        const trainId = new String(prediction.relationships.route.data.id);
+                        const directionId = prediction.attributes.direction_id;
+
+                        const inOrOutb = ["Outbound", "Inbound"];
+                        const listItem = document.createElement('li');
+                        listItem.textContent = `${trainId} Train arriving at ${arrivalTime.toLocaleTimeString()} heading ${inOrOutb[directionId]}`;
+                        list.appendChild(listItem);
+                        delays.forEach(delays => {
+                          const delay = alert.attributes.short_header;
+                          listItem.textContent = '${delay}';
+                          list.appendChild(listItem);
+                        })
+                      });
+
+                      const container = document.createElement('div');
+                      container.appendChild(heading);
+                      container.appendChild(list);
+                      body.appendChild(container);
+                    })
+                    .catch(error => console.error(error));
                   });
-                  const container = document.createElement('div');
-                  container.appendChild(heading);
-                  container.appendChild(list);
-                  body.appendChild(container);
-                })
-                .catch(error => console.error(error));
             }
           });
         })
