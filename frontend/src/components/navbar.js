@@ -31,7 +31,7 @@ export default function Navbar() {
         <Nav.Link href="/mbtaTrips">Where are Trains</Nav.Link>
         <Nav.Link href="/testTJ">"TJplaceholdername"</Nav.Link>
         <Nav.Link href="/testCS">"CSplaceholdername"</Nav.Link>
-        <Nav.Link href="/testTY">"Trains Schedule"</Nav.Link>
+        <Nav.Link href="/testTY">Trains Schedule</Nav.Link>
       </Nav>
     </Container>
   </ReactNavbar>
