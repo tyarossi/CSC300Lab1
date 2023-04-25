@@ -6,30 +6,33 @@ const newUserModel = require("../models/userModel");
 
 
 router.post('/userInfoSecurity', async (req, res) => {
-  const { user, questions } = req.body;
-  console.log("the requested user is " + user);
-  console.log("The questions is "+ questions);
+//  const { user, questions } = req.body;
+  const { username, color, animal, country } = req.body;
+  console.log("the requested user is " + username);
+  console.log("The answer is "+ color + animal + country);
 
   try {
-
-    const securityQuestion = await SecurityQuestion.findOne({ user : user });
+    const securityAns = await SecurityQuestion.findOne({ username : username });
     
-    console.log("The security question is "+ securityQuestion);
-    if (!securityQuestion) {
+    console.log("The security answer for " + username + " is " + securityAns);
+    if (!securityAns) {
       return res.status(404).json({ error: 'User not found' });
     }
-
+   
+    if(color!==securityAns.color || animal!==securityAns.animal || country!==securityAns.country){
+      return res.status(401).json({ error: 'Answer is incorrect' });
+    }
     
-    questions.forEach(function(element){
-      console.log(element);
-      const question = securityQuestion.questions.find((e)=>e.question===element.question);
-      console.log(question);
+    // questions.forEach(function(element){
+    //   console.log(element);
+    //   const question = securityQuestion.questions.find((e)=>e.question===element.question);
+    //   console.log(question);
       
-      if(question === undefined || question.answer !== element.answer){
-        console.log(question.answer);
-        return res.status(401).json({ error: 'Answer is incorrect' });
-      }
-    });
+    //   if(question === undefined || question.answer !== element.answer){
+    //     console.log(question.answer);
+    //     return res.status(401).json({ error: 'Answer is incorrect' });
+    //   }
+    // });
     return res.status(200).json({ message: 'Answer is correct' });
   } catch (err) {
     console.error(err);

@@ -1,12 +1,15 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const questionSchema = new Schema({ question: { type: String, required: true },
-  answer: { type: String, required: true }});
+// const questionSchema = new Schema({ question: { type: String, required: true },
+//   answer: { type: String, required: true }});
 
 const securityQuestionSchema = new Schema({
-  questions: [questionSchema],
-  user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+  // questions: [questionSchema],
+  username: { type: String, label: "username", required: true },
+  color:{ type: String, label: "color"},
+  animal:{ type: String, label: "animal"},
+  country:{ type: String, label: "country"}
 });
 
 const SecurityQuestion = mongoose.model('userquestions', securityQuestionSchema);
