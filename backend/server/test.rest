@@ -97,18 +97,10 @@ Content-Type: application/json
 POST http://localhost:8081/userquestions/userInfoSecurity
 Content-Type: application/json
 
-{   "user": "643c2b7dffc63d3fce270035",
-    "questions" : 
-        [{
-            "question" : "What is your favorite color ?",
-            "answer" : "blue"
-        },{
-            "question" : "What is your favorite animal ?",
-            "answer" : "cat"
-        },{
-            "question" : "What is your favorite country ?",
-            "answer" : "United State"
-        }]
+{   "username": "ChiaSu",
+    "color": "red",
+    "animal":"dog",
+    "country":"UK"
 }
 
 
