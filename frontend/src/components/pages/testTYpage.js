@@ -2,10 +2,11 @@ import React, {useState, useEffect, useContext} from 'react';
 import Alert from 'react-bootstrap/Alert';
 import Stack from 'react-bootstrap/Stack';
 import { UserContext } from '../../App';
-
+document.body.style.background = localStorage.getItem("bgColor")
 
 const Test = () => {
     // const [user, setUser] = useState(null)
+    
     const value = useContext(UserContext)
 
     document.addEventListener('DOMContentLoaded', () => {
