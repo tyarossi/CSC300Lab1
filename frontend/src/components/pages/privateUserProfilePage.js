@@ -31,7 +31,7 @@ const PrivateUserProfile = () => {
   }, []);
 
 
-  // 	<span><b>{<FollowerCount username = {username}/>}</b></span>&nbsp;
+  // <span><b>{<FollowerCount username = {username}/>}</b></span>&nbsp;
   // <span><b>{<FollowingCount username = {username}/>}</b></span>;
   if (!user) return (<div><h4>Log in to view this page.</h4></div>)
   return (

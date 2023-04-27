@@ -21,15 +21,24 @@ Content-Type: application/json
 GET http://localhost:8081/user/getAll
 Content-Type: application/json
 
-###
-
+###EditUser1
 POST http://localhost:8081/user/editUser
 Content-Type: application/json 
 
 {
-    "userId" : "635ab8dfc407faf9f73deaf2",
-    "username" : "Tochi Edit",
-    "password" : "dwwrwr"
+    "userId" : "643ea2dc32e9b85c5aa70c5e",
+    "favline" : "Red",
+    "favroute" : "Green"
+}
+
+###EditUser2
+POST http://localhost:8081/user/editUser
+Content-Type: application/json 
+
+{
+    "userId" : "643ea2dc32e9b85c5aa70c5e",
+    "favline" : "Purple",
+    "favroute" : "Blue"
 }
 
 ###
@@ -57,7 +66,7 @@ POST http://localhost:8081/tickets/createTickets
 Content-Type: application/json 
 
 {
-    "username" : "Mr Farnsworth",
+    "username" : "ThomasUrb",
     "departuretime" : "11:00",
     "stationA" : "StationA",
     "stationB" : "StationB"
@@ -88,18 +97,10 @@ Content-Type: application/json
 POST http://localhost:8081/userquestions/userInfoSecurity
 Content-Type: application/json
 
-{   "user": "643c2b7dffc63d3fce270035",
-    "questions" : 
-        [{
-            "question" : "What is your favorite color ?",
-            "answer" : "blue"
-        },{
-            "question" : "What is your favorite animal ?",
-            "answer" : "cat"
-        },{
-            "question" : "What is your favorite country ?",
-            "answer" : "United State"
-        }]
+{   "username": "ChiaSu",
+    "color": "red",
+    "animal":"dog",
+    "country":"UK"
 }
 
 

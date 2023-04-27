@@ -22,6 +22,7 @@ import TestTY from "./components/pages/testTYpage";
 import { createContext, useState, useEffect } from "react";
 import getUserInfo from "./utilities/decodeJwt";
 import Refunding from "./components/pages/ticketRefundingPage";
+import Security from  "./components/pages/userSecurityPage";
 
 export const UserContext = createContext();
 //test change
@@ -48,6 +49,8 @@ const App = () => {
           <Route exact path="/trainTrackerPage" element={<trainTrackerPage />} />
           <Route exact path="/ticketViewingPage" element={< Ticketing/>} />
           <Route exact path="/ticketRefundingPage" element={< Refunding/>} />
+          <Route exact path="/userSecuritypage" element={< Security/>} />
+
 
           <Route path="/privateUserProfile" element={<PrivateUserProfile />} />
           <Route path="/editUserProfile" element={<EditUserProfile />} />
