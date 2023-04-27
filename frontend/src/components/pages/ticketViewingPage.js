@@ -5,8 +5,6 @@ import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 import getUserInfo from "../../utilities/decodeJwt";
 
-// const ticketsInfo =[{'username':'Chia', 'confirmNum': '123456','departureStation': ' Salem','arrivalStation': 'North Station', 'trainDepartureTime':'17:20 pm ','date':'2023.04.01'},
-// {'username':'Su', 'confirmNum': '1235754','departureStation': ' Peabody','arrivalStation': 'South Station', 'trainDepartureTime':'19:40 pm ','date':'2023.05.01'}];
 function View() {
   const [ticketsInfo, setTicketsInfo] = useState([]);
   const [user, setUser] = useState({});
@@ -14,30 +12,38 @@ function View() {
 
   useEffect(() => {
     async function fetchData() {
-      const result = await axios(
-        'http://localhost:8081/tickets/getAllTickets',
-      );
-      setTicketsInfo(result.data);
-    }
+      if (!user || !user.username) {
+        return;
+      }
+      const username = user.username;
+      console.log('fetching tickets for user:', username);
+      const result = await axios.get(
+        `http://localhost:8081/tickets/getTicketsbyUser?username=${username}`
+        );
+      if(result.data != null){
+        setTicketsInfo([result.data]);
+      }
+    };
     fetchData();
-  }, []);
+    console.log('ticketinfo:', ticketsInfo);
+  }, [user?.username]); // Update the useEffect dependency to user.username
 
   useEffect(() => {
-    setUser(getUserInfo())
+    setUser(getUserInfo());
   }, []);
 
-  const handlePurchase = (async) => {
+  const handlePurchase = () => {
     navigate("/buyTicket");
   };
 
-  const handleRefund = (async) => {
+  const handleRefund = () => {
     navigate("/ticketRefundingPage");
   };
-
   if (!user) return (<div><h4>Log in to view this page.</h4></div>)
   return (
     <div>
       <div class="col-md-12 text-center">
+        <h4>Hello {user.username}!</h4>
           <>
             <Button className="me-2" onClick={handlePurchase}>
               Purchase Ticket
@@ -48,7 +54,8 @@ function View() {
             </Button>
           </>
         </div>
-      {ticketsInfo.map(tickets => (
+        {ticketsInfo.length > 0 ?(
+        ticketsInfo.map(ticket => (
         <Card
         body
         outline
@@ -58,15 +65,20 @@ function View() {
       >
         <Card.Body>
           <Card.Title>Your MBTA Ticket Information</Card.Title>
-          <Card.Text style={{color:'black'}}>Username : {tickets.username}</Card.Text>
-          <Card.Text style={{color:'black'}}>Date : {tickets.date}</Card.Text>
-          <Card.Text style={{color:'black'}}>Train Departure Station : {tickets.stationA}</Card.Text>
-          <Card.Text style={{color:'black'}}>Train Arrival Station : {tickets.stationB}</Card.Text>
-          <Card.Text style={{color:'black'}}>Departure Time : {tickets.departuretime}</Card.Text>
-          <Card.Text style={{color:'black'}}>Confirmation Number : {tickets.ticketnum} </Card.Text>        
+          <Card.Text style={{color:'black'}}>Username : {ticket.username}</Card.Text>
+          <Card.Text style={{color:'black'}}>Date : {ticket.date}</Card.Text>
+          <Card.Text style={{color:'black'}}>Train Departure Station : {ticket.stationA}</Card.Text>
+          <Card.Text style={{color:'black'}}>Train Arrival Station : {ticket.stationB}</Card.Text>
+          <Card.Text style={{color:'black'}}>Departure Time : {ticket.departuretime}</Card.Text>
+          <Card.Text style={{color:'black'}}>Confirmation Number : {ticket.ticketnum} </Card.Text>        
         </Card.Body>
       </Card>
-      ))}
+      ))
+      ) : (
+        <div class="col-md-12 text-center">
+          <h4>You do not currently have a Ticket.</h4>
+        </div>
+      )}
     </div>
   );
 }
