@@ -145,6 +145,7 @@ const EditUserPage = () =>{
         </Form>
         </Card.Body>
       </Card>
+      
       </div>
   )
 }
