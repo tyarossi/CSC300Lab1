@@ -13,9 +13,12 @@ const HomePage = () => {
     }
     const handleClickColor = (c) => {
         c.preventDefault();
-        localStorage.setItem("bgColor",document.getElementById("color").value)
+        var textColorVar = document.getElementById("color");
+        localStorage.setItem("textColor",document.getElementById("color").value)
+        localStorage.setItem("bgColor", textColorVar.options[textColorVar.selectedIndex].text)
         document.body.style.background = localStorage.getItem("bgColor")
         document.getElementById("myDiv").style.background = localStorage.getItem("bgColor")
+        document.getElementById("myDiv").style.color = localStorage.getItem("textColor")
     }
 
     useEffect(() => {
@@ -56,12 +59,12 @@ const HomePage = () => {
                 </h3><h3>
                     <label for = "color">Change Background: </label>
                     <select name = "color" id="color">
-                        <option value="white">White</option>
-                        <option value="red">Red</option>
-                        <option value="yellow">Yellow</option>
-                        <option value="blue">Blue</option>
-                        <option value="green">Green</option>
-                        <option value ="black">Black</option>
+                        <option value="black">White</option>
+                        <option value="black">AntiqueWhite</option>
+                        <option value="black">LightPink</option>
+                        <option value="black">LightBlue</option>
+                        <option value="black">LightGreen</option>
+                        <option value ="lightgrey">Black</option>
                     </select>
                 <button onClick={(c) => handleClickColor(c)}>
                     Change
