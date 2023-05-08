@@ -6,7 +6,6 @@ import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/navbar";
 //import trainTrackerPage from "./components/pages/trainTrackerPage";
 import MbtaAlertsPage from "./components/pages/mbtaAlerts";
-import MbtaTrip from "./components/pages/mbtaTrip"
 import LandingPage from "./components/pages/landingPage";
 import HomePage from "./components/pages/homePage";
 import Login from "./components/pages/loginPage";
@@ -15,9 +14,7 @@ import BuyTickets from "./components/pages/buyTicket";
 import PrivateUserProfile from "./components/pages/privateUserProfilePage";
 import EditUserProfile from "./components/pages/editUserPage";
 import Ticketing from "./components/pages/ticketViewingPage";
-import TestTJ from "./components/pages/testTJpage";
-import TestCS from "./components/pages/testCSpage";
-import TestTY from "./components/pages/testTYpage";
+import TrainSchedule from "./components/pages/incomingTrainsPage";
 //import incomingTrains from "./components/pages/incomingTrains";
 import { createContext, useState, useEffect } from "react";
 import getUserInfo from "./utilities/decodeJwt";
@@ -45,7 +42,6 @@ const App = () => {
           <Route exact path="/signup" element={<Signup />} />
           <Route exact path="/mbtaAlerts" element={<MbtaAlertsPage />} />
           <Route exact path="/buyTicket" element={<BuyTickets />} />
-          <Route exact path="/mbtaTrip" element={<MbtaTrip />} />
           <Route exact path="/trainTrackerPage" element={<trainTrackerPage />} />
           <Route exact path="/ticketViewingPage" element={< Ticketing/>} />
           <Route exact path="/ticketRefundingPage" element={< Refunding/>} />
@@ -54,9 +50,7 @@ const App = () => {
 
           <Route path="/privateUserProfile" element={<PrivateUserProfile />} />
           <Route path="/editUserProfile" element={<EditUserProfile />} />
-          <Route path="/testTJ" element={<TestTJ />} />
-          <Route path="/testCS" element={<TestCS />} />
-          <Route path="/testTY" element={<TestTY />} />
+          <Route path="/incomingTrainsPage" element={<TrainSchedule />} />
           //<Route path="/incomingTrains" element={<incomingTrains />} />
         </Routes>
       </UserContext.Provider>

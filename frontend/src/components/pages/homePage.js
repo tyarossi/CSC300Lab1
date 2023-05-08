@@ -33,23 +33,11 @@ const HomePage = () => {
     return (
         <body>
         <>
-            <div id = "myDiv">
+            <div id = "myDiv"><center>
                 <h3>
                     Welcome
                     <span className='username'> @{username}</span>
-                </h3>
-                <h3>
-                    Your userId in mongo db is
-                    <span className='userId'> {id}</span>
-                </h3>
-                <h3>
-                    Your registered email is
-                    <span className='email'> {email}</span>
-                </h3>
-                <h3>
-                    Your password is
-                    <span className='password'> {password} ( hashed )</span>
-                </h3>
+                </h3>      
                 <h3>
                     Your favorite line is
                     <span className='favline'> {favline}</span>
@@ -58,6 +46,7 @@ const HomePage = () => {
                     <span className='favroute'> {favroute}</span>
                 </h3><h3>
                     <label for = "color">Change Background: </label>
+                </h3><h3>
                     <select name = "color" id="color">
                         <option value="black">White</option>
                         <option value="black">AntiqueWhite</option>
@@ -66,6 +55,7 @@ const HomePage = () => {
                         <option value="black">LightGreen</option>
                         <option value ="lightgrey">Black</option>
                     </select>
+                </h3><h3>
                 <button onClick={(c) => handleClickColor(c)}>
                     Change
                     </button>
@@ -74,7 +64,7 @@ const HomePage = () => {
             <button onClick={(e) => handleClick(e)}>
                 Log Out
             </button>
-            </div>
+            </center></div>
         </>
         </body>
     )

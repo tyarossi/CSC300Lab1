@@ -28,10 +28,7 @@ export default function Navbar() {
         <Nav.Link href="/privateUserProfile">Profile</Nav.Link>
         <Nav.Link href="/mbtaAlerts">Alerts</Nav.Link>
         <Nav.Link href="/ticketViewingPage">Ticketing</Nav.Link>
-        <Nav.Link href="/mbtaTrips">Where are Trains</Nav.Link>
-        <Nav.Link href="/testTJ">"TJplaceholdername"</Nav.Link>
-        <Nav.Link href="/testCS">"CSplaceholdername"</Nav.Link>
-        <Nav.Link href="/testTY">Trains Schedule</Nav.Link>
+        <Nav.Link href="/incomingTrainsPage">Trains Schedule</Nav.Link>
       </Nav>
     </Container>
   </ReactNavbar>
