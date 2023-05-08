@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import getUserInfo from '../../utilities/decodeJwt'
 import myBackgroundImage from '../images/MBTA.jpg'
+import { Link } from 'react-router-dom';
 
 
 const HomePage = () => {
@@ -22,6 +23,16 @@ const HomePage = () => {
         document.body.style.background = localStorage.getItem("bgColor")
         document.getElementById("myDiv").style.background = localStorage.getItem("bgColor")
         document.getElementById("myDiv").style.color = localStorage.getItem("textColor")
+    }
+    const handleClickTicket =(c) => {
+
+        c.preventDefault();
+        navigate('/buyTicket');
+    }
+    const handleClickViewing =(c) => {
+
+        c.preventDefault();
+        navigate('/ticketViewingPage');
     }
 
     useEffect(() => {
@@ -67,12 +78,17 @@ const HomePage = () => {
             <button onClick={(e) => handleClick(e)}>
                 Log Out
             </button>
-            <button onClick={(e) => handleClick(e)}>
+            <Link to ="/buyTicket">
+            <button onClick={(e) => handleClickTicket(e)}>
                 Buy & Refund Ticket
             </button>
-            <button onClick={(e) => handleClick(e)}>
+            </Link>
+            <Link to ="/ticketViewingPage">
+            <button onClick={(e) => handleClickViewing(e)}>
                 View Ticket
             </button>
+            </Link>
+            
             </center></div>
         </>
         </body>
