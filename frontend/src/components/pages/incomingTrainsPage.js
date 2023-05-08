@@ -2,10 +2,17 @@ import React, {useState, useEffect, useContext} from 'react';
 import Alert from 'react-bootstrap/Alert';
 import Stack from 'react-bootstrap/Stack';
 import { UserContext } from '../../App';
+
+//change background color
 document.body.style.background = localStorage.getItem("bgColor")
 
 const Test = () => {
     // const [user, setUser] = useState(null)
+
+    useEffect(() => {
+      document.body.style.color = localStorage.getItem("textColor")
+      document.body.style.color = localStorage.getItem("textColor")
+    }, []);
     
     const value = useContext(UserContext)
 

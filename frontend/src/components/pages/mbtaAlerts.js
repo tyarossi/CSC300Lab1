@@ -2,12 +2,20 @@ import React, { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
 import axios from 'axios';
 
+//set variable that changes the color of the cards depending on background color
+const storedColor = localStorage.getItem("bgColor")
+let myColor = 'bg-light';
+if(storedColor === 'Black'){
+  myColor = 'bg-secondary';
+}
+
 
 function Alerts() {
   const [alerts, setAlerts] = useState([]);
 
 
   useEffect(() => {
+    
     async function fetchData() {
       const result = await axios(
         'https://api-v3.mbta.com/alerts?sort=banner&filter%5Bactivity%5D=BOARD%2CEXIT%2CRIDE',
@@ -24,9 +32,8 @@ function Alerts() {
         <Card
         body
         outline
-        color="success"
-        className="mx-1 my-2"
-        style={{ width: "30rem" }}
+        className={myColor}
+        style={{ width: "30rem"}}
       >
         <Card.Body>
         <Card.Title>Alert</Card.Title>

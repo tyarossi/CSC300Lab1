@@ -10,6 +10,7 @@ const PRIMARY_COLOR = "#9a7bb5";
 const SECONDARY_COLOR = '#b57bac'
 const url = "http://localhost:8081/user/login";
 
+
 const Login = () => {
   const [user, setUser] = useState(null)
   const [data, setData] = useState({ username: "", password: "" });
@@ -22,8 +23,10 @@ const Login = () => {
   let labelStyling = {
     color:SECONDARY_COLOR ,
     fontWeight: "bold",
-    textDecoration: "none",
+    //change text color
+    textDecoration: localStorage.getItem("textColor"),
   };
+  //change background color
   let backgroundStyling = { background: bgColor };
   let buttonStyling = {
     background: PRIMARY_COLOR,
@@ -76,8 +79,8 @@ const Login = () => {
   return (
     <>
       <section className="vh-100">
-        <div className="container-fluid h-custom vh-100">
-          <div
+        <div  className="container-fluid h-custom vh-100">
+          <div id = "myDiv"
             className="row d-flex justify-content-center align-items-center h-100 "
             style={backgroundStyling}>
               <div style={{color:'white', fontSize:'150', fontWeight:'bold',flex:1,justifyContent: 'right', alignItems: 'right' }}>Welcome to MBTA </div>
