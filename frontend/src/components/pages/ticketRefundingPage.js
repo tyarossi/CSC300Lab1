@@ -15,6 +15,12 @@ function Refunding() {
     setData({ ...data, [input.name]: input.value });
   };
 
+  //handle cancel button
+  const handleCancel = async => {
+    navigate("/ticketViewingPage");
+  }
+
+  //handle submit button
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -34,6 +40,7 @@ function Refunding() {
     }
   };
 
+  //Show Refund Form
   return (
     <Form>
     <h1>Welcome to MBTA Refunding Page</h1>
@@ -89,6 +96,13 @@ function Refunding() {
           className="mt-2"
         >
           Confirm
+        </Button>
+        <Button 
+          variant="primary" 
+          type="cancel" 
+          onClick={handleCancel}
+          className="mt-2">
+          Cancel
         </Button>
       </Form>
     );
