@@ -26,6 +26,17 @@ const PrivateUserProfile = () => {
     navigate("/");
   };
 
+  // handle color change
+  const handleClickColor = (c) => {
+    c.preventDefault();
+    var textColorVar = document.getElementById("color");
+    localStorage.setItem("textColor",document.getElementById("color").value)
+    localStorage.setItem("bgColor", textColorVar.options[textColorVar.selectedIndex].text)
+    document.body.style.background = localStorage.getItem("bgColor")
+    document.getElementById("myDiv").style.background = localStorage.getItem("bgColor")
+    document.getElementById("myDiv").style.color = localStorage.getItem("textColor")
+}
+
   useEffect(() => {
     setUser(getUserInfo())
   }, []);
@@ -40,6 +51,20 @@ const PrivateUserProfile = () => {
         <h1>{user && user.username}</h1>
         <h1>{user && user.favline}</h1>
         <h1>{user && user.favroute}</h1>
+        <h3>
+          <select name = "color" id="color">
+            <option value="black">White</option>
+            <option value="black">AntiqueWhite</option>
+            <option value="black">LightPink</option>
+            <option value="black">LightBlue</option>
+            <option value="black">LightGreen</option>
+            <option value ="lightgrey">Black</option>
+          </select>
+        </h3><h3>
+          <button onClick={(c) => handleClickColor(c)}>
+            Change
+          </button>
+        </h3>
         <div class="col-md-12 text-center">
           <>
             <Button className="me-2" onClick={handleEditProfile}>
