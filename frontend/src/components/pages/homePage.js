@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import getUserInfo from '../../utilities/decodeJwt'
+import myBackgroundImage from '../images/MBTA.jpg'
+
+
 const HomePage = () => {
     
     
@@ -31,38 +34,25 @@ const HomePage = () => {
         <div><h4>Log in to view this page.</h4></div>)
     const { id, email, username, password, favline, favroute } = user
     return (
-        <body>
+        <body style={{backgroundImage: `url(${myBackgroundImage})`, backgroundSize: 'cover', height: '100vh'}}>
         <>
-            <div id = "myDiv"><center>
+            <div id = "myDiv" style ={{TextAlign: "center"}}><center>
                 <h3>
-                    Welcome
+                    Welcome To MBTA 
                     <span className='username'> @{username}</span>
                 </h3>      
                 <h3>
-                    Your favorite line is
-                    <span className='favline'> {favline}</span>
-                </h3><h3>
-                    Your favorite route is
-                    <span className='favroute'> {favroute}</span>
-                </h3><h3>
-                    <label for = "color">Change Background: </label>
-                </h3><h3>
-                    <select name = "color" id="color">
-                        <option value="black">White</option>
-                        <option value="black">AntiqueWhite</option>
-                        <option value="black">LightPink</option>
-                        <option value="black">LightBlue</option>
-                        <option value="black">LightGreen</option>
-                        <option value ="lightgrey">Black</option>
-                    </select>
-                </h3><h3>
-                <button onClick={(c) => handleClickColor(c)}>
-                    Change
-                    </button>
-                </h3>
+                    
+                </h3> 
             
             <button onClick={(e) => handleClick(e)}>
                 Log Out
+            </button>
+            <button onClick={(e) => handleClick(e)}>
+                Buy & Refund Ticket
+            </button>
+            <button onClick={(e) => handleClick(e)}>
+                View Ticket
             </button>
             </center></div>
         </>
