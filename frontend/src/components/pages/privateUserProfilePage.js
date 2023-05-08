@@ -49,8 +49,8 @@ const PrivateUserProfile = () => {
     <div class="container">
       <div class="col-md-12 text-center">
         <h1>{user && user.username}</h1>
-        <h1>{user && user.favline}</h1>
-        <h1>{user && user.favroute}</h1>
+        <h1>Your prefer the {user && user.favline} Line.</h1>
+        <h1>Your prefer the {user && user.favroute} Route.</h1>
         <h3>
           <select name = "color" id="color">
             <option value="black">White</option>
