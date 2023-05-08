@@ -47,7 +47,7 @@ const PrivateUserProfile = () => {
   if (!user) return (<div><h4>Log in to view this page.</h4></div>)
   return (
     <div class="container">
-      <div class="col-md-12 text-center">
+      <div id = "myDiv" class="col-md-12 text-center">
         <h1>{user && user.username}</h1>
         <h1>Your prefer the {user && user.favline} Line.</h1>
         <h1>Your prefer the {user && user.favroute} Route.</h1>

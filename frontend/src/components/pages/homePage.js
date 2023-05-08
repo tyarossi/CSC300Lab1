@@ -39,10 +39,10 @@ const HomePage = () => {
                     <span className='username'> @{username}</span>
                 </h3>      
                 <h3>
-                    Your favorite line is
+                    Favorite Line: 
                     <span className='favline'> {favline}</span>
                 </h3><h3>
-                    Your favorite route is
+                    Favorite Route: 
                     <span className='favroute'> {favroute}</span>
                 </h3><h3>
                     <label for = "color">Change Background: </label>
