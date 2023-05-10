@@ -39,6 +39,7 @@ const PrivateUserProfile = () => {
 
   useEffect(() => {
     setUser(getUserInfo())
+    document.getElementById("myDiv").style.color = localStorage.getItem("textColor")
   }, []);
 
 
@@ -46,8 +47,8 @@ const PrivateUserProfile = () => {
   // <span><b>{<FollowingCount username = {username}/>}</b></span>;
   if (!user) return (<div><h4>Log in to view this page.</h4></div>)
   return (
-    <div class="container">
-      <div id = "myDiv" class="col-md-12 text-center">
+    <div id = "myDiv" class="container">
+      <div  class="col-md-12 text-center">
         <h1>{user && user.username}</h1>
         <h1>Your prefer the {user && user.favline} Line.</h1>
         <h1>Your prefer the {user && user.favroute} Route.</h1>
@@ -58,7 +59,7 @@ const PrivateUserProfile = () => {
             <option value="black">LightPink</option>
             <option value="black">LightBlue</option>
             <option value="black">LightGreen</option>
-            <option value ="lightgrey">Black</option>
+            <option value ="AntiqueWhite">Black</option>
           </select>
         </h3><h3>
           <button onClick={(c) => handleClickColor(c)}>

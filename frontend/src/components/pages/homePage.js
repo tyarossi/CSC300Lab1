@@ -16,7 +16,15 @@ const HomePage = () => {
         localStorage.removeItem('accessToken')
         return navigate('/')
     }
-   
+    const handleClickColor = (c) => {
+        c.preventDefault();
+        var textColorVar = document.getElementById("color");
+        localStorage.setItem("textColor",document.getElementById("color").value)
+        localStorage.setItem("bgColor", textColorVar.options[textColorVar.selectedIndex].text)
+        document.body.style.background = localStorage.getItem("bgColor")
+        document.getElementById("myDiv").style.background = localStorage.getItem("bgColor")
+        document.getElementById("myDiv").style.color = localStorage.getItem("textColor")
+    }
     const handleClickTicket =(c) => {
 
         c.preventDefault();
@@ -62,18 +70,24 @@ const HomePage = () => {
                 <h3>
                     
                 </h3><h3>
-                   
+                    Your favorite route is
+                    <span className='favroute'> {favroute}</span>
                 </h3><h3>
-                    
+                    <label for = "color">Change Background: </label>
                 </h3><h3>
-                    
+                    <select name = "color" id="color">
+                        <option value="black">White</option>
+                        <option value="black">AntiqueWhite</option>
+                        <option value="black">LightPink</option>
+                        <option value="black">LightBlue</option>
+                        <option value="black">LightGreen</option>
+                        <option value ="lightgrey">Black</option>
+                    </select>
                 </h3><h3>
-                
+                <button onClick={(c) => handleClickColor(c)}>
+                    Change
+                    </button>
                 </h3>
-            
-            <button onClick={(e) => handleClick(e)}>
-                Log Out
-            </button>
             <Link to ="/buyTicket">
             <button onClick={(e) => handleClickTicket(e)}>
                 Buy Ticket

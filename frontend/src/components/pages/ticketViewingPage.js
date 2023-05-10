@@ -35,13 +35,18 @@ function View() {
   const handlePurchase = () => {
     navigate("/buyTicket");
   };
-
+  useEffect(() => {
+    setUser(getUserInfo())
+    //change background and text color
+    document.getElementById("myDiv").style.color = localStorage.getItem("textColor")
+    document.getElementById("myDiv").style.background = localStorage.getItem("bgColor")
+  }, []);
   const handleRefund = () => {
     navigate("/ticketRefundingPage");
   };
   if (!user) return (<div><h4>Log in to view this page.</h4></div>)
   return (
-    <div>
+    <div id = "myDiv">
       <div class="col-md-12 text-center">
         <h4>Hello {user.username}!</h4>
           <>
