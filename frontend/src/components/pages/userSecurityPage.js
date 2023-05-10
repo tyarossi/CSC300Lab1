@@ -17,11 +17,7 @@ function Security(){
     setData({ ...data, [input.name]: input.value });
   };
 
-  const handleClickeditUser =(c) => {
 
-    c.preventDefault();
-    navigate('/editUserProfile');
-}
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,17 +26,29 @@ function Security(){
       const {accessToken} = res
       console.log("success");
       localStorage.getItem("accessToken", accessToken)
-      navigate("/userSecuritypage");
-    } catch (error) {
-      if (
-        error.response &&
-        error.response.status >= 400 &&
-        error.response.status <= 500
-      ) {
-        console.log("error");
+      navigate('/editUserProfile');
+
+    } 
+    catch (error) {
+      if (error.response && error.response.status === 401) {
+        setError("Incorrect security answers. Please try again.");
+      } else if (error.response && error.response.status >= 400 && error.response.status <= 500) {
         setError(error.response.data.message);
       }
     }
+    
+    // catch (error) {
+    //   if (
+    //     error.response &&
+    //     error.response.status >= 400 &&
+    //     error.response.status <= 500
+    //   ) {
+    //     console.log("error");
+    //     setError(error.response.data.message);
+    //   }
+  
+      
+    // }
   };
   
   return(
@@ -108,7 +116,7 @@ You will need to answer three security questions to change your personal informa
         )}
         
         <Link to ="/editUserProfile">
-        <button onClick={(e) => handleClickeditUser(e)}>
+        <button onClick={(e) => handleSubmit(e)}>
         Confirm 
             </button>
         
