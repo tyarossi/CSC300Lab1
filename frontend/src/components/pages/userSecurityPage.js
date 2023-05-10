@@ -3,7 +3,9 @@ import axios from 'axios';
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom';
 const url = "http://localhost:8081/userquestions/userInfoSecurity";
+
 
 function Security(){
     //const [userInfoSecurity, setInfoSecurity] = useState([]);
@@ -14,6 +16,12 @@ function Security(){
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
   };
+
+  const handleClickeditUser =(c) => {
+
+    c.preventDefault();
+    navigate('/editUserProfile');
+}
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,7 +45,13 @@ function Security(){
   
   return(
     <Form>
-    <h1>Welcome to MBTA Security Question Page</h1>
+    <h1>Welcome to MBTA Security Question Page
+      </h1>
+      
+      {/* <h4 className="security-message">
+You will need to answer three security questions to change your personal information
+</h4>  */}
+
 
         <Form.Group className="mb-3" controlId="Username" >
           <Form.Label>Username</Form.Label>
@@ -78,6 +92,12 @@ function Security(){
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check 
             type="checkbox" 
+            label=" I will need to answer my three security questions correctly to change your personal information" />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+          <Form.Check 
+            type="checkbox" 
             label="I am sure I want to submit it " />
         </Form.Group>
         
@@ -86,17 +106,19 @@ function Security(){
             {error}
           </div>
         )}
-        <Button
-          variant="primary"
-          type="submit"
-          onClick={handleSubmit}
-          className="mt-2"
-        >
-          Confirm
-        </Button>
+        
+        <Link to ="/editUserProfile">
+        <button onClick={(e) => handleClickeditUser(e)}>
+        Confirm 
+            </button>
+        
+        
+        </Link>
       </Form>
+      
+      
     );
-  }
+    }
 export default Security;
 
 

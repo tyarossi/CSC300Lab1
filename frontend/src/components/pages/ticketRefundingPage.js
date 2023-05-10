@@ -68,7 +68,7 @@ function Refunding() {
             placeholder="Please Enter Your Ticket Confirmation Number"/>
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="PaymentInfo">
+        {/* <Form.Group className="mb-3" controlId="PaymentInfo">
           <Form.Label>Payment Information</Form.Label>
           <Form.Control 
             type="paymentInfo" 
@@ -76,7 +76,7 @@ function Refunding() {
           <Form.Text className="text-muted">
             We'll never share your payment information with anyone else.
           </Form.Text>
-        </Form.Group>
+        </Form.Group> */}
 
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check 

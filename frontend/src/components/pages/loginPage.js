@@ -80,7 +80,8 @@ const Login = () => {
           <div
             className="row d-flex justify-content-center align-items-center h-100 "
             style={backgroundStyling}>
-              <div style={{color:'white', fontSize:'150', fontWeight:'bold',flex:1,justifyContent: 'right', alignItems: 'right' }}>Welcome to MBTA </div>
+              
+              <div style={{color:'white', fontSize:'150', fontWeight:'bold',flex:1,justifyContent: 'center', alignItems: 'center' }}>Welcome to MBTA </div>
               <img src={MBTA} style={{width:'50%', height: '50%'}}/>
               {/* <img src="MBTA.jpg" style="width:50% Height: 50%"/> */}
               <div style={{color:'#b342f5', fontSize:'50', fontWeight:'bold',content:'center' }}>Please enter your username and password </div>
