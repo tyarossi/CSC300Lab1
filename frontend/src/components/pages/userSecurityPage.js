@@ -31,24 +31,13 @@ function Security(){
     } 
     catch (error) {
       if (error.response && error.response.status === 401) {
-        setError("Incorrect security answers. Please try again.");
+        setError(" Waring! Incorrect security answers. Please try again.");
       } else if (error.response && error.response.status >= 400 && error.response.status <= 500) {
         setError(error.response.data.message);
       }
     }
     
-    // catch (error) {
-    //   if (
-    //     error.response &&
-    //     error.response.status >= 400 &&
-    //     error.response.status <= 500
-    //   ) {
-    //     console.log("error");
-    //     setError(error.response.data.message);
-    //   }
   
-      
-    // }
   };
   
   return(
@@ -56,9 +45,7 @@ function Security(){
     <h1>Welcome to MBTA Security Question Page
       </h1>
       
-      {/* <h4 className="security-message">
-You will need to answer three security questions to change your personal information
-</h4>  */}
+    
 
 
         <Form.Group className="mb-3" controlId="Username" >
